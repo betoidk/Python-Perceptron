@@ -5,9 +5,9 @@ X = np.array([[0,0],[0,1],[1,0],[1,1]])
 y = np.array([0, 0, 0, 1])
 
 # ── Parámetros ajustables ────────────────────────────────────────────────────
-epocas             = 100      #10 DE LA AND STEPS
-taza_aprendizaje   = 0.2        # 10 DE AL OR STEPS Y ASI CON TODAS LAS DEMÁS FUNCIONES DE ACTIVACIÓN
-umbral             = 0.7        # Umbral de clasificación (0.5 para sigmoid/linear, 0 para step)
+epocas             = 10      #10 DE LA AND STEPS
+tasa_aprendizaje   = 0.1        # 10 DE AL OR STEPS Y ASI CON TODAS LAS DEMÁS FUNCIONES DE ACTIVACIÓN
+umbral             = 0.5        # Umbral de clasificación (0.5 para sigmoid/linear, 0 para step)
 funcion_activacion = 'step'  # 'step' | 'sign' | 'sigmoid' | 'linear'
 
 # ── Sesgo y pesos iniciales ──────────────────────────────────────────────────
@@ -46,7 +46,7 @@ def r2_score(y_true, y_pred):
     return 1.0 - ss_res / ss_tot if ss_tot != 0 else (1.0 if ss_res == 0 else 0.0)
 
 # ── Entrenamiento ─────────────────────────────────────────────────────────────
-print(f"Función: '{funcion_activacion}' | Umbral: {umbral} | Taza de aprendizaje: {taza_aprendizaje}\n")
+print(f"Función: '{funcion_activacion}' | Umbral: {umbral} | Tasa de aprendizaje: {tasa_aprendizaje}\n")
 
 for epoch in range(epocas):
     errores = 0
@@ -54,7 +54,7 @@ for epoch in range(epocas):
         yout = activar(np.dot(xi, w))
         pred = clasificar(yout)
         if pred != yi:
-            w += taza_aprendizaje * (yi - yout) * xi
+            w += tasa_aprendizaje * (yi - yout) * xi
             errores += 1
     print(f"Época {epoch+1}/{epocas} | Pesos: {w} | Errores: {errores}")
     if errores == 0:
