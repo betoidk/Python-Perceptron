@@ -2,13 +2,13 @@ import numpy as np
 
 # ── Datos: compuerta AND ─────────────────────────────────────────────────────
 X = np.array([[0,0],[0,1],[1,0],[1,1]])
-y = np.array([0, 0, 0, 1])
+y = np.array([0, 1, 1, 1])
 
 # ── Parámetros ajustables ────────────────────────────────────────────────────
-epocas             = 10      #10 DE LA AND STEPS
-tasa_aprendizaje   = 0.1        # 10 DE AL OR STEPS Y ASI CON TODAS LAS DEMÁS FUNCIONES DE ACTIVACIÓN
+epocas             = 10000        #10 DE LA AND STEPS
+tasa_aprendizaje   = 0.2       # 10 DE AL OR STEPS Y ASI CON TODAS LAS DEMÁS FUNCIONES DE ACTIVACIÓN
 umbral             = 0.5        # Umbral de clasificación (0.5 para sigmoid/linear, 0 para step)
-funcion_activacion = 'step'  # 'step' | 'sign' | 'sigmoid' | 'linear'
+funcion_activacion = 'linear'  # 'step' | 'sign' | 'sigmoid' | 'linear'
 
 # ── Sesgo y pesos iniciales ──────────────────────────────────────────────────
 xb = np.hstack([X, np.ones((len(X), 1))])  # Columna de sesgo (bias)
